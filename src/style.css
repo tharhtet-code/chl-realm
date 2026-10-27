@@ -1,0 +1,1089 @@
+:root {
+  color-scheme: dark;
+  --brand-color: #38bdf8;
+  --bg-deep: #020617;
+  --bg-panel: rgba(15, 23, 42, 0.92);
+  --bg-card: #1e293b;
+  --border-fantasy: #d4af37;
+  --border-muted: #475569;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-primary: #b45309;
+  --accent-gold: #facc15;
+  --accent-cyan: #38bdf8;
+  --accent-green: #22c55e;
+  --font-open-sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  inline-size: 100dvw;
+  block-size: 100dvh;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1e1b4b 0%, #020617 75%);
+  color: var(--text-main);
+  font-family: var(--font-open-sans);
+  accent-color: var(--brand-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+/* ============================================================================
+   PORTRAIT PHONE SHELL (9:16 Mobile Frame on Desktop, Full-Screen on Mobile)
+   ============================================================================ */
+.portrait-phone-shell {
+  position: relative;
+  inline-size: min(460px, 100dvw);
+  block-size: 100dvh;
+  max-block-size: 960px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-deep);
+  border-inline: 2px solid rgba(250, 204, 21, 0.45);
+  box-shadow: 0 0 48px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .portrait-phone-shell {
+    inline-size: 100dvw;
+    block-size: 100dvh;
+    max-block-size: none;
+    border-inline: none;
+  }
+}
+
+/* ============================================================================
+   1. TOP PORTRAIT HUD (Open Sans + Simple Quest Icon Button)
+   ============================================================================ */
+.hud-topbar {
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.96) 0%, rgba(15, 23, 42, 0.9) 100%);
+  border-block-end: 2px solid var(--accent-primary);
+  padding: 0.45rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+.realm-crest-img {
+  inline-size: 2.3rem;
+  block-size: 2.3rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.brand-titles {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.realm-title {
+  margin: 0;
+  font-family: var(--font-open-sans);
+  font-weight: 800;
+  font-size: clamp(0.9rem, 0.78rem + 0.5vw, 1.05rem);
+  color: var(--accent-gold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.realm-subtitle {
+  margin: 0.05rem 0 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Simple Quest Icon Button (Replaces P.A.C.E. bar) */
+.quest-icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  background: rgba(30, 41, 59, 0.95);
+  color: #fef08a;
+  border: 1.5px solid var(--accent-gold);
+  border-radius: 20px;
+  padding: 0.28rem 0.58rem;
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+  font-size: 0.74rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(250, 204, 21, 0.25);
+}
+
+.quest-icon-btn:hover {
+  background: #334155;
+}
+
+.quest-icon-glyph {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.quest-icon-badge {
+  background: rgba(250, 204, 21, 0.22);
+  color: #fde047;
+  padding: 0.05rem 0.32rem;
+  border-radius: 10px;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.hud-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3rem;
+}
+
+.stat-pill {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(250, 204, 21, 0.28);
+  border-radius: 6px;
+  padding: 0.18rem 0.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-key {
+  font-family: var(--font-open-sans);
+  font-size: 0.56rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.stat-pill strong {
+  font-family: var(--font-open-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-inline-size: 100%;
+}
+
+/* ============================================================================
+   2. FULL-BLEED 3D VIEWPORT & FLOATING QUEST / GUARDIAN OVERLAYS
+   ============================================================================ */
+.viewport-stage {
+  position: relative;
+  flex: 1;
+  min-block-size: 0;
+  inline-size: 100%;
+  overflow: hidden;
+  background: #020617;
+}
+
+#realmCanvas {
+  inline-size: 100%;
+  block-size: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+.floating-quest-card {
+  position: absolute;
+  inset-block-start: 0.45rem;
+  inset-inline: 0.5rem;
+  z-index: 6;
+  background: rgba(2, 6, 23, 0.84);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(250, 204, 21, 0.5);
+  border-radius: 10px;
+  padding: 0.42rem 0.6rem;
+}
+
+.active-quest-box {
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.core-values-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-block-start: 0.28rem;
+}
+
+.badge-chip {
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+  font-size: 0.64rem;
+  padding: 0.12rem 0.4rem;
+  border-radius: 6px;
+  background: rgba(250, 204, 21, 0.18);
+  border: 1px solid var(--accent-gold);
+  color: #fef08a;
+}
+
+/* Live 2x World Map Radar Widget */
+.minimap-widget {
+  position: absolute;
+  inset-block-start: 5.1rem;
+  inset-inline-start: 0.55rem;
+  z-index: 8;
+  width: 140px;
+  background: rgba(2, 6, 23, 0.88);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(56, 189, 248, 0.55);
+  border-radius: 10px;
+  padding: 0.25rem;
+  box-shadow: 0 4px 14px rgba(2, 6, 23, 0.6);
+  transition: width 0.2s ease;
+}
+
+.minimap-widget.expanded {
+  width: min(360px, calc(100% - 1.1rem));
+  z-index: 12;
+  border-color: #facc15;
+}
+
+.minimap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 0.2rem;
+  margin-block-end: 0.18rem;
+}
+
+.minimap-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.minimap-toggle-btn {
+  background: rgba(51, 65, 85, 0.85);
+  color: #fde047;
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  border-radius: 5px;
+  font-size: 0.68rem;
+  line-height: 1;
+  padding: 0.1rem 0.3rem;
+  cursor: pointer;
+}
+
+.minimap-canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1520 / 880;
+  border-radius: 6px;
+  cursor: crosshair;
+}
+
+/* Floating Guardian Spirit "Thura" Button */
+.guardian-floating-btn {
+  position: absolute;
+  inset-block-start: 5.1rem;
+  inset-inline-end: 0.55rem;
+  z-index: 7;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.92), rgba(3, 105, 161, 0.92));
+  color: #ffffff;
+  border: 1.5px solid #a7f3d0;
+  border-radius: 22px;
+  padding: 0.34rem 0.7rem;
+  font-family: var(--font-open-sans);
+  font-size: 0.72rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  animation: guardianPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes guardianPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.guardian-avatar-dot {
+  font-size: 0.9rem;
+}
+
+/* Slide-Over Hub & Spoke Myanmar Worlds Drawer */
+.world-drawer {
+  position: absolute;
+  inset-block: 0.45rem;
+  inset-inline: 0.5rem;
+  z-index: 15;
+  background: rgba(2, 6, 23, 0.96);
+  backdrop-filter: blur(8px);
+  border: 2px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.world-drawer[hidden] {
+  display: none;
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: 0.35rem;
+}
+
+.drawer-header h2 {
+  margin: 0;
+  font-family: var(--font-open-sans);
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--accent-gold);
+}
+
+.panel-hint {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.world-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+}
+
+.world-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 100%;
+  text-align: start;
+  padding: 0.52rem 0.65rem;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid #475569;
+  border-inline-start: 5px solid var(--world-color, #94a3b8);
+  border-radius: 8px;
+  font-family: var(--font-open-sans);
+  font-weight: 600;
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.world-nav-btn.active {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.world-nav-btn.locked {
+  opacity: 0.6;
+}
+
+/* Proximity Banner above Thumb Controls */
+.proximity-banner {
+  position: absolute;
+  inset-block-end: 7.4rem;
+  inset-inline: 0.65rem;
+  z-index: 8;
+  background: rgba(2, 6, 23, 0.92);
+  border: 2px solid var(--accent-gold);
+  border-radius: 10px;
+  padding: 0.42rem 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+  font-size: 0.76rem;
+  color: #fef08a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.proximity-banner[hidden] {
+  display: none;
+}
+
+/* ============================================================================
+   3. ERGONOMIC THUMB-ZONE OVERLAY (Left D-Pad + Right Action Rune Orb)
+   ============================================================================ */
+.thumb-controls-overlay {
+  position: absolute;
+  inset-block-end: 0.55rem;
+  inset-inline: 0.65rem;
+  z-index: 7;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.touch-dpad,
+.right-thumb-cluster {
+  pointer-events: auto;
+}
+
+.touch-dpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.18rem;
+  background: rgba(2, 6, 23, 0.55);
+  padding: 0.35rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dpad-mid-row {
+  display: flex;
+  gap: 0.18rem;
+}
+
+.dpad-btn {
+  inline-size: 2.35rem;
+  block-size: 2.15rem;
+  background: rgba(30, 41, 59, 0.9);
+  color: #f8fafc;
+  border: 1.5px solid rgba(250, 204, 21, 0.55);
+  border-radius: 8px;
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.dpad-btn.center-orb {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: var(--accent-cyan);
+  font-size: 0.85rem;
+}
+
+.dpad-btn:active {
+  background: var(--accent-gold);
+  color: #020617;
+  transform: scale(0.95);
+}
+
+.action-rune-orb {
+  inline-size: 4.4rem;
+  block-size: 4.4rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f59e0b, #b45309);
+  border: 3px solid #fef08a;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(250, 204, 21, 0.45);
+  cursor: pointer;
+}
+
+.action-rune-orb:active {
+  transform: scale(0.93);
+}
+
+.orb-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.orb-label {
+  font-family: var(--font-open-sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+  margin-block-start: 0.1rem;
+}
+
+/* ============================================================================
+   4. PORTRAIT BOTTOM DOCK (Chat Bar + 5 Navigation Tabs)
+   ============================================================================ */
+.portrait-bottom-dock {
+  z-index: 10;
+  background: #020617;
+  border-block-start: 2px solid rgba(250, 204, 21, 0.45);
+  padding: 0.4rem 0.55rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.chat-bar {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.chat-bar input,
+input[type="text"],
+input[type="password"],
+select,
+textarea {
+  background: #0f172a;
+  color: #f8fafc;
+  border: 1.5px solid #475569;
+  border-radius: 6px;
+  padding: 0.38rem 0.55rem;
+  font-family: var(--font-open-sans);
+  font-size: 0.8rem;
+  inline-size: 100%;
+  user-select: text;
+}
+
+.dock-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.3rem;
+}
+
+.dock-tab {
+  background: #0f172a;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 0.32rem 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  font-family: var(--font-open-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dock-tab:hover,
+.dock-tab:active {
+  background: #1e293b;
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.dock-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.pixel-btn {
+  background: #1e293b;
+  color: #f8fafc;
+  border: 1.5px solid var(--accent-gold);
+  border-radius: 6px;
+  padding: 0.42rem 0.72rem;
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.pixel-btn.sm {
+  padding: 0.26rem 0.52rem;
+  font-size: 0.7rem;
+}
+
+.pixel-btn.accent {
+  background: var(--accent-primary);
+  border-color: #fde047;
+  color: #ffffff;
+}
+
+.pixel-btn.danger {
+  background: #7f1d1d;
+  border-color: #fca5a5;
+}
+
+/* ============================================================================
+   ANIMATED CHARACTER FACE IN QUEST DIALOG & GUARDIAN CHAT
+   ============================================================================ */
+.npc-portrait-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #020617;
+  border: 1.5px solid rgba(250, 204, 21, 0.45);
+  border-radius: 10px;
+  padding: 0.65rem;
+  margin-block-end: 0.75rem;
+}
+
+.npc-face-canvas {
+  inline-size: 68px;
+  block-size: 68px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold);
+  background: radial-gradient(circle at 50% 35%, #1e293b, #020617);
+  flex-shrink: 0;
+  animation: faceFloat 2.4s ease-in-out infinite;
+}
+
+.npc-face-canvas.sm {
+  inline-size: 44px;
+  block-size: 44px;
+}
+
+@keyframes faceFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.03);
+  }
+}
+
+.npc-dialogue-text {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #f8fafc;
+}
+
+.step-progress-pill {
+  display: inline-block;
+  background: rgba(56, 189, 248, 0.18);
+  border: 1px solid #38bdf8;
+  color: #7dd3fc;
+  font-weight: 700;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  margin-block-end: 0.45rem;
+}
+
+/* ============================================================================
+   GUARDIAN THURA 1:1 SINGLE-THREAD CONVERSATION UI
+   ============================================================================ */
+.guardian-dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.guardian-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-block-size: 44dvh;
+  overflow-y: auto;
+  padding: 0.55rem;
+  background: #020617;
+  border: 1px solid #334155;
+  border-radius: 8px;
+}
+
+.guardian-msg {
+  max-inline-size: 88%;
+  padding: 0.5rem 0.68rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  line-height: 1.42;
+}
+
+.guardian-msg.guardian {
+  align-self: flex-start;
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  color: #ecfdf5;
+}
+
+.guardian-msg.user {
+  align-self: flex-end;
+  background: rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: #f0f9ff;
+}
+
+.guardian-input-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.guardian-quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip-btn {
+  background: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+  border-radius: 14px;
+  padding: 0.25rem 0.55rem;
+  font-family: var(--font-open-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chip-btn:hover {
+  border-color: var(--accent-cyan);
+  color: #ffffff;
+}
+
+/* ============================================================================
+   NATIVE <dialog> MODALS (Compliant with modern-web-guidance `dialog` & `light-dismiss-a-dialog`)
+   ============================================================================ */
+dialog {
+  padding: 0;
+  border: 2px solid var(--accent-gold);
+  border-radius: 12px;
+  background: #0f172a;
+  color: var(--text-main);
+  inline-size: min(440px, 94dvw);
+  max-block-size: 86dvh;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+}
+
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* MANDATORY (both rules): without them, scrolling over the backdrop or inside the dialog scrolls the page behind it */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgba(2, 6, 23, 0.76);
+  backdrop-filter: blur(4px);
+}
+
+.dialog-shell {
+  display: flex;
+  flex-direction: column;
+  max-block-size: 84dvh;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background: #020617;
+  border-block-end: 1.5px solid #334155;
+}
+
+.dialog-kicker {
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+  font-size: 0.64rem;
+  color: var(--accent-gold);
+}
+
+.dialog-header h2 {
+  margin: 0.1rem 0 0;
+  font-family: var(--font-open-sans);
+  font-weight: 800;
+  font-size: 0.96rem;
+  color: #ffffff;
+}
+
+.dialog-body {
+  padding: 0.85rem;
+  overflow-y: auto;
+}
+
+.hero-sheet-preview {
+  inline-size: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1.5px solid var(--accent-gold);
+  margin-block-end: 0.55rem;
+}
+
+/* ============================================================================
+   RESPONSIVE DATA TABLES (Compliant with modern-web-guidance `responsive-table`)
+   ============================================================================ */
+.leaderboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.leaderboard-grid h3 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--accent-gold);
+}
+
+.table-wrapper {
+  overflow: auto;
+  max-inline-size: 100%;
+  max-block-size: min(360px, 65dvh);
+  container-type: inline-size;
+  border: 1px solid #334155;
+  border-radius: 8px;
+}
+
+table {
+  inline-size: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.78rem;
+}
+
+table caption {
+  text-align: start;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: #020617;
+}
+
+thead {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1;
+  background: #1e293b;
+}
+
+th,
+td {
+  padding: 0.42rem 0.55rem;
+  text-align: start;
+  border-block-end: 1px solid #334155;
+}
+
+tbody th {
+  position: sticky;
+  inset-inline-start: 0;
+  background: #0f172a;
+  font-family: var(--font-open-sans);
+  font-weight: 700;
+}
+
+@container (width < 600px) {
+  table,
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    display: block;
+  }
+
+  thead {
+    /* MANDATORY: Hide column header from layout and screen readers. */
+    display: none;
+  }
+
+  tr {
+    margin-block-end: 0.75rem;
+    border: 1px solid #475569;
+  }
+
+  tbody th {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 2;
+    background: #1e293b;
+  }
+
+  table.sector-table {
+    --label-2: "Business Unit";
+    --label-3: "Completion";
+    --label-4: "Quests Cleared";
+  }
+
+  table.individual-table {
+    --label-2: "Sector";
+    --label-3: "Class Rank";
+    --label-4: "Monthly XP";
+  }
+
+  td:nth-child(2)::before {
+    content: var(--label-2) ": ";
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  td:nth-child(3)::before {
+    content: var(--label-3) ": ";
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  td:nth-child(4)::before {
+    content: var(--label-4) ": ";
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+}
+
+/* ============================================================================
+   CARDS, FORMS & BRAND-CONSISTENT RADIO CONTROLS
+   ============================================================================ */
+.quiz-card,
+.scorm-slide-card {
+  background: var(--bg-card);
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 0.65rem;
+  margin-block-end: 0.65rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+  margin-block-start: 0.5rem;
+}
+
+.quiz-option-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.48rem 0.6rem;
+  background: #0f172a;
+  border: 1.5px solid #334155;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.quiz-option-label:hover {
+  border-color: var(--accent-cyan);
+}
+
+.quiz-option-label:has(input[type="radio"]:checked) {
+  border-color: var(--accent-gold);
+  background: rgba(250, 204, 21, 0.12);
+}
+
+/* Fallback for older browsers without accent-color (Compliant with `brand-consistent-forms`) */
+@supports not (accent-color: var(--brand-color)) {
+  form input[type="radio"].visually-hidden {
+    position: absolute !important;
+    clip-path: inset(50%) !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .quiz-option-label {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  input[type="radio"] + span::before {
+    content: "";
+    position: absolute;
+    left: 0.55rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%;
+    background: #0f172a;
+  }
+
+  input[type="radio"]:checked + span::before {
+    background-color: var(--brand-color, #38bdf8);
+    border-color: var(--brand-color, #38bdf8);
+  }
+}
+
+.cosmetic-grid,
+.sso-sector-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+}
+
+.cosmetic-card,
+.sso-card {
+  background: var(--bg-card);
+  border: 1.5px solid #334155;
+  border-radius: 8px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.gemini-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-block-end: 0.55rem;
+}
+
+.block-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-block-end: 0.55rem;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.code-textarea {
+  font-family: "Courier New", monospace;
+  font-size: 0.74rem;
+  background: #020617;
+  color: #86efac;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-block-end: 0.55rem;
+}
+
+.xapi-pre {
+  background: #020617;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 0.55rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.68rem;
+  color: #7dd3fc;
+  overflow-x: auto;
+  margin: 0.35rem 0 0.7rem;
+}

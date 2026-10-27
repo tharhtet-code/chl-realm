@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // YAML Quest definitions synced from Instructional Design pipeline
+    match /quests/{questId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // Player profiles, Clean Slate progression, and inventories
+    match /players/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+
+      match /completions/{questId} {
+        allow read: if true;
+        allow create: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
+    // Sector vs. Sector & Individual Leaderboards
+    match /leaderboards/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

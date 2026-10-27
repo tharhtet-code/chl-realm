@@ -1,0 +1,1129 @@
+# ============================================================================
+# CHL REALM — DYNAMIC YAML CONTENT ENGINE
+# 7 Worlds × 5 Quest Spots Each = 35 Interactive Learning Quests
+# ============================================================================
+
+quests:
+  # ==========================================================================
+  # WORLD 1: THE HUB (Ancient Bagan Portal City) — 5 Quest Spots
+  # ==========================================================================
+  - campaign: "City_Holdings_Core_Values"
+    quest_id: "hub_core_values_01"
+    title: "The Bagan Charter of Core Values"
+    core_value: "Social Responsibility"
+    lms_hook: "module_global_charter_2026"
+    world: "The_HUB"
+    npc_assigner: "Guild_Master_Su"
+    spawn_location: [760, 290]
+    puzzle_object: "Ananda Golden Pagoda Shrine"
+    dialogue:
+      greeting: "Mingalaba! Welcome home to The Hub in Ancient Bagan. Every colleague starts on a Clean Slate as a Level 1 Novice. Will you accept the Core Values Charter trial?"
+      completion: "You have mastered the Four Pillars! Your Cross-World Portal Pass is now active across all Myanmar cities!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "What are the Four Core Values that unite every Business Unit in City Holdings?"
+        options:
+          - "Innovation, Integrity, Excellence, and Social Responsibility"
+          - "Speed, Secrecy, Profit, and Hierarchy"
+          - "Luck, Tradition, Silence, and Competition"
+          - "Short-term gains over community trust"
+        correct_index: 0
+        explanation: "Innovation, Integrity, Excellence, and Social Responsibility guide every City Holdings sector."
+      - prompt: "Under the 'Clean Slate' rule in CHL Realm, how do players earn ranks, badges, and cosmetics?"
+        options:
+          - "Everyone starts as a Level 1 Novice and earns progression purely through learning quests synced to the LMS"
+          - "By importing real-world job titles automatically"
+          - "By skipping training modules"
+          - "Only headquarters staff can level up"
+        correct_index: 0
+        explanation: "Every colleague begins equally as a Level 1 Novice and progresses through learning."
+    rewards:
+      xp: 220
+      coins: 100
+      badge: "Bagan_Charter_Compass"
+      item_unlock: "Monochrome_Executive_Glasses"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Holdings_Core_Values"
+    quest_id: "hub_innovation_02"
+    title: "Bagan Silk & Digital Craft"
+    core_value: "Innovation"
+    lms_hook: "module_hub_innovation_2026"
+    world: "The_HUB"
+    npc_assigner: "Tailor_Daw_Khin"
+    spawn_location: [370, 330]
+    puzzle_object: "Thatbyinnyu Silk Loom Shrine"
+    dialogue:
+      greeting: "In Ancient Bagan, artisans perfected lacquerware over centuries. Today, we blend heritage with continuous Innovation. Ready to accept this trial?"
+      completion: "Wonderful! You bridged timeless craftsmanship with modern innovation!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "How should a team member practice Innovation in daily operations?"
+        options:
+          - "Proactively suggest workflow improvements that save time and enhance customer or colleague experience"
+          - "Wait five years before reporting a broken process"
+          - "Keep helpful shortcuts hidden from teammates"
+          - "Reject new digital tools without testing them"
+        correct_index: 0
+        explanation: "Continuous improvement from every colleague drives company-wide Innovation."
+      - prompt: "When piloting a new tool in your Business Unit, what is the best way to measure success?"
+        options:
+          - "Track clear metrics, gather frontline feedback, and share learnings across sectors"
+          - "Guess whether it worked without asking users"
+          - "Ignore safety and compliance guardrails"
+          - "Stop communicating with your supervisor"
+        correct_index: 0
+        explanation: "Evidence-based feedback loops ensure innovations scale safely."
+    rewards:
+      xp: 180
+      coins: 85
+      badge: "Bagan_Artisan_Spark"
+      item_unlock: "Golden_Pagoda_Brim"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Holdings_Core_Values"
+    quest_id: "hub_excellence_03"
+    title: "The Stone Inscriptions of Excellence"
+    core_value: "Excellence"
+    lms_hook: "module_hub_excellence_2026"
+    world: "The_HUB"
+    npc_assigner: "Herald_Ko_Min"
+    spawn_location: [1130, 330]
+    puzzle_object: "Myazedi Stone Inscription Pillar"
+    dialogue:
+      greeting: "Like the four-language Myazedi inscription of Bagan, clear communication and high standards unite our teams. Will you accept this trial?"
+      completion: "Your commitment to Excellence is etched in gold!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "When collaborating with a colleague from another City Holdings sector, what reflects Excellence?"
+        options:
+          - "Communicating clearly, respecting timelines, and sharing accurate data to achieve the shared goal"
+          - "Using jargon to confuse other departments"
+          - "Delaying replies until the deadline passes"
+          - "Blaming other sectors for shared challenges"
+        correct_index: 0
+        explanation: "Cross-sector clarity and mutual respect power federated Excellence."
+    rewards:
+      xp: 180
+      coins: 85
+      badge: "Ananda_Gold_Crest"
+      item_unlock: "Monochrome_Executive_Glasses"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Holdings_Core_Values"
+    quest_id: "hub_social_04"
+    title: "Irrawaddy Community Stewardship"
+    core_value: "Social Responsibility"
+    lms_hook: "module_hub_csr_2026"
+    world: "The_HUB"
+    npc_assigner: "Guild_Master_Su"
+    spawn_location: [490, 620]
+    puzzle_object: "Irrawaddy Lantern Pier"
+    dialogue:
+      greeting: "Social Responsibility means caring for our communities and environment across Myanmar. Do you accept this stewardship trial?"
+      completion: "Thank you for championing sustainable communities across Myanmar!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "Which action best demonstrates Social Responsibility in our daily workplace?"
+        options:
+          - "Reducing plastic & energy waste, supporting local producers, and participating in community uplift programs"
+          - "Leaving lights and equipment running overnight"
+          - "Discarding recyclable packaging into general waste"
+          - "Ignoring community safety guidelines"
+        correct_index: 0
+        explanation: "Every sustainable choice contributes to a cleaner, stronger Myanmar."
+    rewards:
+      xp: 190
+      coins: 90
+      badge: "Irrawaddy_Lotus"
+      item_unlock: "Integrity_Halo_Pet"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Holdings_Core_Values"
+    quest_id: "hub_pace_05"
+    title: "The Sunrise Balloon P.A.C.E. Ritual"
+    core_value: "Excellence"
+    lms_hook: "module_hub_pace_2026"
+    world: "The_HUB"
+    npc_assigner: "Herald_Ko_Min"
+    spawn_location: [1040, 620]
+    puzzle_object: "Bagan Balloon Launchpad"
+    dialogue:
+      greeting: "Just as a Bagan hot-air balloon pilot checks every instrument before sunrise, our daily learning follows P.A.C.E. Ready to accept?"
+      completion: "You are ready to soar across all six Business Realms!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "What does the daily P.A.C.E. learning loop stand for?"
+        options:
+          - "Plan, Assess, Complete, Evaluate"
+          - "Pause, Avoid, Cancel, Exit"
+          - "Push, Argue, Compete, End"
+          - "Print, Archive, Copy, Erase"
+        correct_index: 0
+        explanation: "Plan, Assess, Complete, and Evaluate keeps daily 15-minute learning bursts focused."
+    rewards:
+      xp: 200
+      coins: 95
+      badge: "Sunrise_Navigator"
+      item_unlock: "Golden_Pagoda_Brim"
+      unlocks_travel_pass: true
+
+  # ==========================================================================
+  # WORLD 2: RETAIL REALM (CMHL • Yangon Shopping Center) — 5 Quest Spots
+  # ==========================================================================
+  - campaign: "City_Holdings_Core_Values"
+    quest_id: "val_integrity_01"
+    title: "The Honest Checkout & Community Trust"
+    core_value: "Integrity"
+    lms_hook: "module_core_values_2026"
+    world: "Retail_Realm"
+    npc_assigner: "Coach_Ohnmar"
+    spawn_location: [210, 440]
+    puzzle_object: "POS Integrity Terminal #4"
+    dialogue:
+      greeting: "Welcome to CMHL in Yangon! To serve our community, we must act with Integrity. Can you solve this scenario?"
+      completion: "Outstanding! You upheld CMHL Integrity. Wear your Purple CMHL Tabard with pride!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "A customer accidentally leaves a paid luxury gift basket at the express checkout counter in Yangon City Mall. No one else is nearby. What is the right action?"
+        options:
+          - "Log it immediately in the Lost & Found register, secure it at Customer Service, and alert the floor lead"
+          - "Leave it at the end of the counter until closing time"
+          - "Return the items to the aisle shelves without logging the receipt"
+          - "Move it to the staff locker room without telling anyone"
+        correct_index: 0
+        explanation: "Integrity means acting honestly and transparently even when nobody is watching."
+      - prompt: "A promotional shelf tag for fresh milk expired last night, showing 10% off, while the POS scans regular price. How do you respond?"
+        options:
+          - "Apologize warmly, honor the displayed policy transparently, and alert the aisle coordinator to update the tag immediately"
+          - "Tell the shopper the register price is final and cannot be questioned"
+          - "Ask the shopper to come back next week"
+          - "Ignore the customer and scan the next item"
+        correct_index: 0
+        explanation: "Honoring commitments and fixing root causes builds lifelong community trust."
+      - prompt: "During morning stock rotation in the produce plaza, you spot a crate of strawberries with moisture damage. What should you do?"
+        options:
+          - "Remove the damaged crate from the sales floor and record it accurately in the quality variance log"
+          - "Hide the bruised berries at the bottom of the display"
+          - "Relabel the expiration date by two days"
+          - "Sell them at full price without inspection"
+        correct_index: 0
+        explanation: "Quality integrity protects every family shopping at City Mart Holding Co., Ltd."
+    rewards:
+      xp: 200
+      coins: 90
+      badge: "Integrity_Seed"
+      item_unlock: "Purple_CMHL_Apron"
+      unlocks_travel_pass: true
+
+  - campaign: "CMHL_Yangon_Retail_Mastery"
+    quest_id: "cmhl_merch_02"
+    title: "Yangon Supermarket Freshness & Visual Display"
+    core_value: "Excellence"
+    lms_hook: "module_cmhl_merchandising_2026"
+    world: "Retail_Realm"
+    npc_assigner: "Coach_Thura_Tun"
+    spawn_location: [480, 250]
+    puzzle_object: "City Mall Fresh Produce Gondola"
+    dialogue:
+      greeting: "In our Yangon supermarkets, crisp produce displays and clear aisle navigation create a world-class shopping journey. Ready to accept?"
+      completion: "Superb merchandising! Our Yangon aisles shine with Excellence!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "When restocking chilled dairy and fresh vegetables on the sales floor, which stock rotation method prevents expired items?"
+        options:
+          - "Place newer stock behind older stock (FEFO/FIFO) and check expiration dates on every unit"
+          - "Push old stock to the back and put new stock in front"
+          - "Stack crates in the middle of the walkway blocking carts"
+          - "Turn off the chiller lights to save power"
+        correct_index: 0
+        explanation: "Proper rotation guarantees freshness and eliminates food waste."
+      - prompt: "A customer in a wheelchair is trying to pass an aisle where a restocking pallet is parked. What should you do immediately?"
+        options:
+          - "Greet the customer warmly, move the pallet jack out of the walkway at once, and offer assistance reaching high shelves"
+          - "Ask the customer to take another aisle"
+          - "Finish unpacking the entire pallet first"
+          - "Leave the boxes scattered on the floor"
+        correct_index: 0
+        explanation: "Accessible, safe aisles are essential to inclusive customer care."
+    rewards:
+      xp: 200
+      coins: 90
+      badge: "Yangon_Plaza_Star"
+      item_unlock: "Purple_CMHL_Apron"
+      unlocks_travel_pass: true
+
+  - campaign: "CMHL_Yangon_Retail_Mastery"
+    quest_id: "cmhl_loyalty_03"
+    title: "City Rewards & Omnichannel Care"
+    core_value: "Innovation"
+    lms_hook: "module_cmhl_city_rewards_2026"
+    world: "Retail_Realm"
+    npc_assigner: "Coach_Su_Mon"
+    spawn_location: [1010, 260]
+    puzzle_object: "City Rewards Digital Kiosk"
+    dialogue:
+      greeting: "Our City Rewards app and City Mall Online bring digital convenience to Yangon shoppers. Will you accept this omnichannel trial?"
+      completion: "Brilliant! You connected physical retail warmth with digital speed!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "An elderly shopper wants to earn City Rewards points at checkout but is unsure how to open the mobile app barcode. How do you assist?"
+        options:
+          - "Patiently guide them step-by-step with a warm smile or look up their membership via registered phone number"
+          - "Tell them to skip points because the line is busy"
+          - "Take their phone without asking permission"
+          - "Tell them the app is only for young shoppers"
+        correct_index: 0
+        explanation: "Inclusive digital guidance makes Innovation welcoming for every generation."
+    rewards:
+      xp: 210
+      coins: 95
+      badge: "City_Rewards_Champion"
+      item_unlock: "Purple_CMHL_Apron"
+      unlocks_travel_pass: true
+
+  - campaign: "CMHL_Yangon_Retail_Mastery"
+    quest_id: "cmhl_ColdChain_04"
+    title: "Kandawgyi Seafood & Butcher Cold-Chain"
+    core_value: "Excellence"
+    lms_hook: "module_cmhl_fresh_safety_2026"
+    world: "Retail_Realm"
+    npc_assigner: "Coach_Thura_Tun"
+    spawn_location: [1200, 530]
+    puzzle_object: "Ocean Fresh Chiller Counter"
+    dialogue:
+      greeting: "Fresh seafood and meat require strict hygiene and temperature control. Ready to inspect the Ocean Fresh Chiller?"
+      completion: "Spotless inspection! Every family can trust our fresh counters!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "During your hourly check, a fresh meat display case thermometer reads 9°C instead of 0–4°C. What is the mandatory action?"
+        options:
+          - "Alert maintenance immediately, transfer stock to a backup working chiller, and log the temperature excursion"
+          - "Leave the meat inside and check again tomorrow"
+          - "Unplug the thermometer display"
+          - "Put ice on top of the glass cover"
+        correct_index: 0
+        explanation: "Immediate containment protects food safety and prevents spoilage."
+    rewards:
+      xp: 210
+      coins: 95
+      badge: "Fresh_Guardian_Crest"
+      item_unlock: "Purple_CMHL_Apron"
+      unlocks_travel_pass: true
+
+  - campaign: "CMHL_Yangon_Retail_Mastery"
+    quest_id: "cmhl_greener_05"
+    title: "Shwedagon Green Bag Sustainability Drive"
+    core_value: "Social Responsibility"
+    lms_hook: "module_cmhl_green_retail_2026"
+    world: "Retail_Realm"
+    npc_assigner: "Coach_Ohnmar"
+    spawn_location: [550, 610]
+    puzzle_object: "Eco-Bag Recycling Pavilion"
+    dialogue:
+      greeting: "CMHL leads Yangon’s 'Bring Your Own Bag' movement to cut single-use plastics. Will you accept this sustainability trial?"
+      completion: "Greener Yangon achieved! Thank you for championing eco-friendly retail!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "How can cashiers encourage shoppers to participate in CMHL’s reusable bag initiative?"
+        options:
+          - "Thank shoppers who bring reusable bags, remind them of Green Points rewards, and pack items carefully"
+          - "Automatically double-bag every single item in plastic"
+          - "Scold customers who forgot their bag"
+          - "Hide reusable bags under the counter"
+        correct_index: 0
+        explanation: "Positive reinforcement and Green Points inspire lasting eco-friendly habits."
+    rewards:
+      xp: 200
+      coins: 90
+      badge: "Green_Yangon_Leaf"
+      item_unlock: "Purple_CMHL_Apron"
+      unlocks_travel_pass: true
+
+  # ==========================================================================
+  # WORLD 3: FOOD & BEVERAGE DISTRICT (CityFood • Mandalay) — 5 Quest Spots
+  # ==========================================================================
+  - campaign: "CityFood_Hospitality_Standards"
+    quest_id: "food_safety_01"
+    title: "Mandalay Kitchen Cold-Chain & HACCP Mastery"
+    core_value: "Excellence"
+    lms_hook: "module_cityfood_haccp_2026"
+    world: "Food_Beverage_District"
+    npc_assigner: "Chef_Kyaw"
+    spawn_location: [920, 420]
+    puzzle_object: "Smart Bakery Thermal Oven & Prep Station"
+    dialogue:
+      greeting: "Mingalaba from Mandalay! In the Food & Beverage District, one degree of temperature drift can compromise safety. Ready to inspect the kitchen?"
+      completion: "Magnifique! Our Mandalay kitchens and cafes remain gold-standard thanks to your vigilance!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "What is the safe cold-holding temperature threshold for chilled dairy and pastry fillings in CityFood kitchens?"
+        options:
+          - "At or below 4°C (40°F) with continuous digital temperature logging"
+          - "Around 14°C as long as the door stays closed"
+          - "Room temperature for up to 8 hours"
+          - "Only checked once a week on Fridays"
+        correct_index: 0
+        explanation: "Keeping chilled ingredients at or below 4°C prevents bacterial growth."
+      - prompt: "To prevent allergen cross-contact when preparing a nut-free cafe order, which protocol is mandatory?"
+        options:
+          - "Wash hands, put on fresh gloves, and use sanitized color-coded utensils and prep boards"
+          - "Wipe the knife with a dry towel and continue"
+          - "Use the same cutting board if it looks clean"
+          - "Simply remove visible nuts from the top of the pastry"
+        correct_index: 0
+        explanation: "Strict allergen isolation protects guests with life-threatening sensitivities."
+    rewards:
+      xp: 250
+      coins: 110
+      badge: "Excellence_Flame"
+      item_unlock: "Chef_Toque_Crown"
+      unlocks_travel_pass: true
+
+  - campaign: "CityFood_Hospitality_Standards"
+    quest_id: "food_bakery_02"
+    title: "Seasons Bakery Golden Crust & Recipe Precision"
+    core_value: "Excellence"
+    lms_hook: "module_cityfood_bakery_2026"
+    world: "Food_Beverage_District"
+    npc_assigner: "Baker_Nwe_Ni"
+    spawn_location: [1160, 290]
+    puzzle_object: "Royal Moat Proofing & Baking Deck"
+    dialogue:
+      greeting: "Consistent artisan baking requires exact weight, proofing humidity, and oven calibration. Will you accept the Baker’s Trial?"
+      completion: "Golden perfection! Every loaf meets Seasons Bakery’s highest standard!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "Why must bakers weigh ingredients on calibrated digital scales rather than scooping by volume?"
+        options:
+          - "Exact gram measurements guarantee consistent texture, food safety, and recipe authenticity across every outlet"
+          - "Scales are only for decoration"
+          - "Guessing by eye is faster and just as accurate"
+          - "Recipes change randomly every hour"
+        correct_index: 0
+        explanation: "Precision baking ensures every guest enjoys the same signature quality."
+    rewards:
+      xp: 220
+      coins: 95
+      badge: "Mandalay_Artisan_Crown"
+      item_unlock: "Chef_Toque_Crown"
+      unlocks_travel_pass: true
+
+  - campaign: "CityFood_Hospitality_Standards"
+    quest_id: "food_hospitality_03"
+    title: "U Bein Sunset Espresso & Guest Warmth"
+    core_value: "Integrity"
+    lms_hook: "module_cityfood_barista_2026"
+    world: "Food_Beverage_District"
+    npc_assigner: "Barista_Sai_Aung"
+    spawn_location: [330, 530]
+    puzzle_object: "Mandalay Espresso Tasting Bar"
+    dialogue:
+      greeting: "When a guest visits our Mandalay cafe after a long day, a warm greeting and honest service make all the difference. Accept this trial?"
+      completion: "Heartwarming hospitality! Your service embodies Mandalay grace!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "You accidentally steam regular dairy milk instead of oat milk for a lactose-intolerant guest’s latte. Nobody noticed yet. What do you do?"
+        options:
+          - "Discard the mistake immediately, sanitize the steam wand, and remake the drink fresh with oat milk"
+          - "Serve it anyway to save 60 seconds"
+          - "Top it with oat foam so it looks similar"
+          - "Blame the cashier for the order"
+        correct_index: 0
+        explanation: "Dietary integrity protects guest health and honors their trust."
+    rewards:
+      xp: 220
+      coins: 95
+      badge: "Ruby_Chalice_Heart"
+      item_unlock: "Chef_Toque_Crown"
+      unlocks_travel_pass: true
+
+  - campaign: "CityFood_Hospitality_Standards"
+    quest_id: "food_hygiene_04"
+    title: "Palace Moat Sanitization & Handwash Ritual"
+    core_value: "Excellence"
+    lms_hook: "module_cityfood_sanitation_2026"
+    world: "Food_Beverage_District"
+    npc_assigner: "Chef_Kyaw"
+    spawn_location: [330, 260]
+    puzzle_object: "U Bein Hygiene Station"
+    dialogue:
+      greeting: "Clean hands and sanitized prep surfaces are the first shield of food safety. Ready to verify our hygiene protocol?"
+      completion: "100% kitchen hygiene verified!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "How long must kitchen team members scrub hands with warm water and soap before putting on food-prep gloves?"
+        options:
+          - "At least 20 seconds, covering palms, backs of hands, between fingers, and under nails"
+          - "A 2-second rinse with cold water"
+          - "Gloves replace the need to wash hands"
+          - "Only once at the start of the shift"
+        correct_index: 0
+        explanation: "A thorough 20-second handwash is required before every glove change."
+    rewards:
+      xp: 200
+      coins: 90
+      badge: "Pure_Hearth_Shield"
+      item_unlock: "Chef_Toque_Crown"
+      unlocks_travel_pass: true
+
+  - campaign: "CityFood_Hospitality_Standards"
+    quest_id: "food_zero_waste_05"
+    title: "Mandalay Hill Sustainable Kitchen"
+    core_value: "Social Responsibility"
+    lms_hook: "module_cityfood_sustainability_2026"
+    world: "Food_Beverage_District"
+    npc_assigner: "Baker_Nwe_Ni"
+    spawn_location: [730, 230]
+    puzzle_object: "Royal Moat Eco-Pantry"
+    dialogue:
+      greeting: "Smart prep forecasting and composting coffee grounds help CityFood protect Mandalay’s environment. Accept this trial?"
+      completion: "Sustainable culinary mastery achieved!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "What is the most effective way to reduce kitchen food waste without compromising menu availability?"
+        options:
+          - "Use daily demand forecasting logs, accurate portioning tools, and proper FIFO ingredient labeling"
+          - "Over-prepare double batches of every item"
+          - "Serve expired items to cut waste numbers"
+          - "Skip date labels on prep containers"
+        correct_index: 0
+        explanation: "Smart prep planning minimizes waste while keeping every dish fresh."
+    rewards:
+      xp: 210
+      coins: 90
+      badge: "Mandalay_Green_Chef"
+      item_unlock: "Chef_Toque_Crown"
+      unlocks_travel_pass: true
+
+  # ==========================================================================
+  # WORLD 4: MANUFACTURING & AGRI ZONE (Brand Origins • Taunggyi) — 5 Quests
+  # ==========================================================================
+  - campaign: "Brand_Origins_Quality_Chain"
+    quest_id: "agri_traceability_01"
+    title: "From Taunggyi Highland Farms to Factory Pack"
+    core_value: "Social Responsibility"
+    lms_hook: "module_brand_origins_sourcing_2026"
+    world: "Manufacturing_Agri_Zone"
+    npc_assigner: "Supervisor_Thiri"
+    spawn_location: [380, 620]
+    puzzle_object: "Inle Hydro-Sensor & Traceability Shrine"
+    dialogue:
+      greeting: "Welcome to Taunggyi & Inle! Here, sustainable Shan farmlands meet high-tech processing plants. Will you accept this traceability trial?"
+      completion: "Superb traceability! Every Shan harvest batch is verified sustainable and safe!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "What is the purpose of Good Agricultural Practices (GAP) soil and water sensors on our partner farms in Taunggyi?"
+        options:
+          - "To verify sustainable irrigation and ensure zero banned pesticides are used before harvest"
+          - "To speed up growth using unapproved chemicals"
+          - "To skip laboratory quality testing"
+          - "To hide the origin of raw crops"
+        correct_index: 0
+        explanation: "GAP sensors protect both Shan farmers' ecosystems and consumer health."
+      - prompt: "How does a QR Batch Lot Code on a finished Brand Origins package protect consumers?"
+        options:
+          - "It traces the exact harvest date, Taunggyi farm plot, and factory processing line in seconds"
+          - "It is only a decorative pattern"
+          - "It replaces expiration dates"
+          - "It prevents customers from reading ingredients"
+        correct_index: 0
+        explanation: "End-to-end farm-to-factory traceability builds complete product integrity."
+    rewards:
+      xp: 250
+      coins: 110
+      badge: "Responsibility_Leaf"
+      item_unlock: "Indigo_Harvest_Cloak"
+      unlocks_travel_pass: true
+
+  - campaign: "Brand_Origins_Quality_Chain"
+    quest_id: "agri_factory_02"
+    title: "High-Tech Factory Lockout/Tagout (LOTO) Safety"
+    core_value: "Excellence"
+    lms_hook: "module_brand_origins_loto_2026"
+    world: "Manufacturing_Agri_Zone"
+    npc_assigner: "Engineer_Ko_Phyo"
+    spawn_location: [1000, 280]
+    puzzle_object: "Brand Origins Factory Line 1 Console"
+    dialogue:
+      greeting: "In our automated processing plant, machine safety is sacred. Will you accept the Lockout/Tagout engineering trial?"
+      completion: "Zero-incident safety verified! Our factory engineers salute you!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "Before clearing a jammed conveyor or servicing packaging machinery, what is the mandatory first step?"
+        options:
+          - "Perform Lockout/Tagout (LOTO): isolate all power sources, apply your personal lock and tag, and verify zero energy"
+          - "Reach into the moving machine quickly with a stick"
+          - "Ask a coworker to watch the start button without locking it"
+          - "Bypass the safety interlock sensor"
+        correct_index: 0
+        explanation: "Lockout/Tagout ensures machinery cannot accidentally start while being serviced."
+    rewards:
+      xp: 230
+      coins: 100
+      badge: "Factory_Safety_Shield"
+      item_unlock: "Indigo_Harvest_Cloak"
+      unlocks_travel_pass: true
+
+  - campaign: "Brand_Origins_Quality_Chain"
+    quest_id: "agri_quality_03"
+    title: "Inline Metal Detection & ISO Seal Check"
+    core_value: "Integrity"
+    lms_hook: "module_brand_origins_iso_2026"
+    world: "Manufacturing_Agri_Zone"
+    npc_assigner: "QA_Lead_Nang_Hom"
+    spawn_location: [1170, 540]
+    puzzle_object: "ISO Packaging & QA Scanner"
+    dialogue:
+      greeting: "Every pouch leaving our plant passes through calibrated metal detectors and vacuum seal checks. Ready to accept this QA trial?"
+      completion: "Flawless quality control! Not a single defective seal escaped your inspection!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "During a routine hourly test, the inline metal detector fails to reject the standard test wand. What must you do?"
+        options:
+          - "Stop the packaging line immediately, quarantine all product packed since the last passed check, and recalibrate/re-scan"
+          - "Keep running the line to meet daily volume targets"
+          - "Tap the detector and ignore the failed test"
+          - "Sign the logbook as passed anyway"
+        correct_index: 0
+        explanation: "Critical Control Point (CCP) integrity requires immediate line hold and re-verification."
+    rewards:
+      xp: 230
+      coins: 100
+      badge: "ISO_Golden_Seal"
+      item_unlock: "Indigo_Harvest_Cloak"
+      unlocks_travel_pass: true
+
+  - campaign: "Brand_Origins_Quality_Chain"
+    quest_id: "agri_shan_soil_04"
+    title: "Shan Highland Terrace Soil Conservation"
+    core_value: "Social Responsibility"
+    lms_hook: "module_brand_origins_shan_2026"
+    world: "Manufacturing_Agri_Zone"
+    npc_assigner: "Supervisor_Thiri"
+    spawn_location: [310, 260]
+    puzzle_object: "Taunggyi Terrace Agronomy Station"
+    dialogue:
+      greeting: "Terraced contour farming in Taunggyi prevents soil erosion during monsoon rains. Will you accept the Agronomy Trial?"
+      completion: "The Shan hills remain fertile for generations to come!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "How does Brand Origins support smallholder farmers in Taunggyi and Inle?"
+        options:
+          - "Providing fair-trade buyback agreements, quality seeds, and training in sustainable contour farming"
+          - "Buying crops without checking quality or sustainability"
+          - "Encouraging slash-and-burn clearing"
+          - "Withholding agronomy data from farmers"
+        correct_index: 0
+        explanation: "Empowering local farming communities creates shared prosperity and superior harvests."
+    rewards:
+      xp: 210
+      coins: 95
+      badge: "Shan_Highland_Crest"
+      item_unlock: "Indigo_Harvest_Cloak"
+      unlocks_travel_pass: true
+
+  - campaign: "Brand_Origins_Quality_Chain"
+    quest_id: "agri_water_05"
+    title: "Inle Watershed & Clean Effluent Stewardship"
+    core_value: "Social Responsibility"
+    lms_hook: "module_brand_origins_water_2026"
+    world: "Manufacturing_Agri_Zone"
+    npc_assigner: "Engineer_Ko_Phyo"
+    spawn_location: [750, 590]
+    puzzle_object: "Eco-Filtration Conduit"
+    dialogue:
+      greeting: "Clean water connects our farms and processing plants. Ready to inspect the Eco-Filtration Conduit?"
+      completion: "Crystal-clear water stewardship verified!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "Before any factory wash-water is released or recycled for landscape irrigation, what is required?"
+        options:
+          - "Full multi-stage treatment and automated pH/biological testing in our wastewater treatment plant"
+          - "Direct discharge into storm drains without testing"
+          - "Diluting untreated water with tap water"
+          - "Testing only once a year"
+        correct_index: 0
+        explanation: "Strict environmental treatment protects local waterways and communities."
+    rewards:
+      xp: 210
+      coins: 95
+      badge: "Inle_Water_Guardian"
+      item_unlock: "Indigo_Harvest_Cloak"
+      unlocks_travel_pass: true
+
+  # ==========================================================================
+  # WORLD 5: VENTURES VALLEY (City Ventures • Putao & Myeik) — 5 Quest Spots
+  # ==========================================================================
+  - campaign: "City_Ventures_Digital_Future"
+    quest_id: "ventures_innovation_01"
+    title: "Putao Cryo-Cloud & Responsible AI Node"
+    core_value: "Innovation"
+    lms_hook: "module_ventures_ai_cyber_2026"
+    world: "Ventures_Valley"
+    npc_assigner: "Architect_Zayar"
+    spawn_location: [960, 330]
+    puzzle_object: "Quantum Server Rack #07"
+    dialogue:
+      greeting: "Welcome to Putao & Myeik Ventures Valley! Review our Responsible AI & Zero-Trust briefing, then calibrate Quantum Server Rack #07!"
+      completion: "Node calibrated! Your digital fluency powers the future of City Ventures!"
+    challenge_type: "scorm_video"
+    video_briefing:
+      title: "SCORM Micro-Briefing: Responsible AI & Zero-Trust Security"
+      duration_label: "01:15 Interactive SCORM Module"
+      slides:
+        - heading: "1. Data Privacy in Generative AI"
+          body: "Use enterprise-approved Gemini sandboxes. Never paste unmasked customer PII, payment tokens, or confidential HR records into public consumer tools."
+        - heading: "2. Phishing-Resistant Authentication"
+          body: "Keycloak OIDC SSO + MFA protects federated access across all 6 Business Units."
+    questions:
+      - prompt: "You want to use AI to summarize a dataset of customer support tickets. What is the mandatory first step under City Ventures policy?"
+        options:
+          - "Anonymize/strip all customer PII (names, phone numbers, member IDs) and use the enterprise-sanctioned Gemini workspace"
+          - "Upload the raw customer database to a free public website"
+          - "Share the API credentials in a public chat room"
+          - "Disable encryption to speed up processing"
+        correct_index: 0
+        explanation: "Responsible AI pairs high-velocity innovation with rock-solid customer data privacy."
+      - prompt: "You receive an urgent message asking you to bypass Keycloak SSO and enter your corporate password on an external domain. What do you do?"
+        options:
+          - "Do not click; report the suspected phishing attempt immediately via the Security Operations button"
+          - "Log in quickly to see what it is"
+          - "Forward the link to your whole department"
+          - "Send your OTP code over chat"
+        correct_index: 0
+        explanation: "Zero-Trust vigilance keeps the entire City Holdings federation resilient."
+    rewards:
+      xp: 260
+      coins: 120
+      badge: "Innovation_Spark"
+      item_unlock: "Ventures_Cyber_Visor"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Ventures_Digital_Future"
+    quest_id: "ventures_cyber_02"
+    title: "Zero-Trust Node #08 Phishing Shield"
+    core_value: "Integrity"
+    lms_hook: "module_ventures_zerotrust_2026"
+    world: "Ventures_Valley"
+    npc_assigner: "SecOps_Hnin_Wai"
+    spawn_location: [1180, 330]
+    puzzle_object: "Zero-Trust Firewall Monolith"
+    dialogue:
+      greeting: "Cybersecurity is everyone’s responsibility. Will you accept the Zero-Trust Phishing Shield trial?"
+      completion: "Firewall fortified! Zero-Trust security is locked in!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "You step away from your laptop in a shared workspace for 5 minutes. What is the mandatory security habit?"
+        options:
+          - "Lock your screen immediately (Cmd+Ctrl+Q / Win+L) and keep credentials secured"
+          - "Leave the admin dashboard open for convenience"
+          - "Write your password on a sticky note on the monitor"
+          - "Plug in an unknown USB drive found on the table"
+        correct_index: 0
+        explanation: "Screen locking and hardware vigilance prevent unauthorized physical access."
+    rewards:
+      xp: 220
+      coins: 100
+      badge: "Putao_Cyber_Shield"
+      item_unlock: "Ventures_Cyber_Visor"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Ventures_Digital_Future"
+    quest_id: "ventures_fintech_03"
+    title: "Myeik Archipelago Digital Payment Resilience"
+    core_value: "Excellence"
+    lms_hook: "module_ventures_fintech_2026"
+    world: "Ventures_Valley"
+    npc_assigner: "Product_Lead_Arkar"
+    spawn_location: [390, 570]
+    puzzle_object: "FinTech API Island Hub"
+    dialogue:
+      greeting: "Digital wallets and QR payments must be fast, accurate, and resilient across every island and city. Accept this FinTech trial?"
+      completion: "Transaction ledger verified with 99.99% reliability!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "When deploying a new payment microservice update, how do we prevent checkout disruptions?"
+        options:
+          - "Use automated regression tests, staged canary rollouts, and instant rollback monitoring"
+          - "Push untested code directly to production on Friday night"
+          - "Delete transaction logs to save disk space"
+          - "Ignore latency alerts"
+        correct_index: 0
+        explanation: "Staged canary releases and observability ensure seamless customer checkouts."
+    rewards:
+      xp: 230
+      coins: 105
+      badge: "Myeik_Pearl_Ledger"
+      item_unlock: "Emerald_Data_Sprite"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Ventures_Digital_Future"
+    quest_id: "ventures_sandbox_04"
+    title: "Myeik Pearl AI Prompt Engineering Lab"
+    core_value: "Innovation"
+    lms_hook: "module_ventures_prompt_2026"
+    world: "Ventures_Valley"
+    npc_assigner: "Architect_Zayar"
+    spawn_location: [350, 340]
+    puzzle_object: "Myeik Pearl AI Sandbox"
+    dialogue:
+      greeting: "Clear context, structured output schemas, and human review make AI a superpower for instructional design and operations. Accept this trial?"
+      completion: "AI Prompt Mastery unlocked!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "After an AI model generates a draft training quiz or report, what must happen before publishing it?"
+        options:
+          - "A domain expert reviews and verifies accuracy, tone, and policy alignment (Human-in-the-Loop)"
+          - "Publish it blindly without reading a single word"
+          - "Assume AI never makes factual errors"
+          - "Skip schema validation"
+        correct_index: 0
+        explanation: "Human-in-the-Loop verification ensures quality and accountability."
+    rewards:
+      xp: 220
+      coins: 100
+      badge: "AI_Navigator_Star"
+      item_unlock: "Ventures_Cyber_Visor"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Ventures_Digital_Future"
+    quest_id: "ventures_green_cloud_05"
+    title: "Hkakabo Razi Green Cloud Optimization"
+    core_value: "Social Responsibility"
+    lms_hook: "module_ventures_green_cloud_2026"
+    world: "Ventures_Valley"
+    npc_assigner: "SecOps_Hnin_Wai"
+    spawn_location: [730, 230]
+    puzzle_object: "Putao Cryo-Server Peak"
+    dialogue:
+      greeting: "Optimizing cloud compute and shutting down idle staging clusters cuts carbon emissions and cost. Ready for the Green Cloud trial?"
+      completion: "Sustainable cloud efficiency achieved!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "Which engineering practice reduces both cloud energy consumption and infrastructure waste?"
+        options:
+          - "Auto-scaling workloads based on demand and scheduling non-production test servers to sleep off-hours"
+          - "Leaving 100 oversized GPU instances idle 24/7"
+          - "Running infinite loops in production"
+          - "Duplicating terabytes of unused log files"
+        correct_index: 0
+        explanation: "Right-sizing and auto-scaling align technical Excellence with environmental care."
+    rewards:
+      xp: 210
+      coins: 95
+      badge: "Putao_Glacier_Crest"
+      item_unlock: "Emerald_Data_Sprite"
+      unlocks_travel_pass: true
+
+  # ==========================================================================
+  # WORLD 6: PROPERTY ESTATES (City Properties • Mawlamyaing) — 5 Quest Spots
+  # ==========================================================================
+  - campaign: "City_Properties_Urban_Excellence"
+    quest_id: "property_blueprint_01"
+    title: "Mawlamyaing Mall Safety & Tenant Blueprint"
+    core_value: "Excellence"
+    lms_hook: "module_properties_facility_2026"
+    world: "Property_Estates"
+    npc_assigner: "Director_May"
+    spawn_location: [420, 350]
+    puzzle_object: "Blueprint Table Alpha"
+    dialogue:
+      greeting: "Welcome to Mawlamyaing Property Estates! From shopping centers to modern offices, safety and tenant care are our foundation. Ready to review Blueprint Alpha?"
+      completion: "Blueprint approved! Your facility mastery keeps every City Properties landmark thriving!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "During a routine walkthrough of a retail mall atrium, you notice a contractor preparing ceiling electrical work without a barricaded safety perimeter. What is your immediate action?"
+        options:
+          - "Issue a polite Stop-Work pause, establish safety cones/barricades, and verify their Permit-to-Work (PTW) before resuming"
+          - "Walk past since they look experienced"
+          - "Wait until tomorrow's weekly meeting to mention it"
+          - "Turn off the main mall escalators without warning"
+        correct_index: 0
+        explanation: "Proactive Permit-to-Work enforcement protects shoppers, tenants, and contractors alike."
+      - prompt: "A tenant reports an HVAC cooling drop in their flagship store ahead of peak weekend foot traffic. How should Facility Management respond?"
+        options:
+          - "Acknowledge within SLA, dispatch an engineer to inspect the chiller zone, and keep the tenant updated on resolution ETA"
+          - "Close the ticket without visiting the site"
+          - "Tell the tenant to buy portable fans"
+          - "Wait until Monday morning to read the message"
+        correct_index: 0
+        explanation: "Responsive communication and preventive engineering define Property Estates Excellence."
+    rewards:
+      xp: 240
+      coins: 110
+      badge: "Architectural_Crest"
+      item_unlock: "Golden_Safety_Hardhat"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Properties_Urban_Excellence"
+    quest_id: "property_mep_02"
+    title: "Sky-Mall Tower Crane & Elevated Work Safety"
+    core_value: "Integrity"
+    lms_hook: "module_properties_crane_2026"
+    world: "Property_Estates"
+    npc_assigner: "Chief_Engineer_Zaw"
+    spawn_location: [1090, 290]
+    puzzle_object: "Sky-Mall Tower Crane Base"
+    dialogue:
+      greeting: "Working at height in Mawlamyaing requires 100% harness tie-off and wind-speed checks. Will you accept the Tower Crane Safety trial?"
+      completion: "Elevated safety certified! Wear your Golden Builder Helm with pride!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "What is mandatory before any technician climbs a scaffolding or elevated maintenance platform?"
+        options:
+          - "Inspect full-body safety harness, wear a chin-strapped hardhat, and maintain 100% tie-off to a certified anchor point"
+          - "Climb up quickly without a harness if the task takes 2 minutes"
+          - "Carry heavy tools loose in both hands while climbing a ladder"
+          - "Work during high-wind lightning storms"
+        correct_index: 0
+        explanation: "Fall protection and PPE compliance save lives on every job site."
+    rewards:
+      xp: 220
+      coins: 100
+      badge: "Mawlamyaing_Sky_Warden"
+      item_unlock: "Golden_Safety_Hardhat"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Properties_Urban_Excellence"
+    quest_id: "property_tenant_03"
+    title: "Thanlwin Concierge & Emergency Evacuation Readiness"
+    core_value: "Social Responsibility"
+    lms_hook: "module_properties_evac_2026"
+    world: "Property_Estates"
+    npc_assigner: "Leasing_Lead_Chaw"
+    spawn_location: [1060, 570]
+    puzzle_object: "Tenant Concierge Office"
+    dialogue:
+      greeting: "Clear fire exits and trained floor wardens protect thousands of visitors every day. Ready to accept the Emergency Readiness trial?"
+      completion: "All emergency corridors verified clear and ready!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "During a mall inspection, you find promotional display boxes temporarily stacked inside an emergency fire exit stairwell. What do you do?"
+        options:
+          - "Have the boxes removed immediately so the fire exit path is 100% unobstructed at all times"
+          - "Leave them there until the promotion ends next week"
+          - "Lock the fire exit door so nobody sees the boxes"
+          - "Stack more boxes on top"
+        correct_index: 0
+        explanation: "Fire exits and stairwells must remain completely clear every second of the day."
+    rewards:
+      xp: 220
+      coins: 100
+      badge: "Thanlwin_Safety_Star"
+      item_unlock: "Golden_Safety_Hardhat"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Properties_Urban_Excellence"
+    quest_id: "property_green_04"
+    title: "Mawlamyaing Ridge Solar & Smart Chiller Grid"
+    core_value: "Innovation"
+    lms_hook: "module_properties_solar_2026"
+    world: "Property_Estates"
+    npc_assigner: "Chief_Engineer_Zaw"
+    spawn_location: [730, 220]
+    puzzle_object: "Mawlamyaing Ridge Solar Tower"
+    dialogue:
+      greeting: "Rooftop solar arrays and smart BMS chillers reduce our malls' carbon footprint. Accept the Green Building trial?"
+      completion: "Smart energy grid optimized!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "How does a Building Management System (BMS) optimize shopping center energy use without reducing shopper comfort?"
+        options:
+          - "By dynamically adjusting chiller load and fresh-air ventilation based on real-time footfall and outdoor temperature"
+          - "By turning off all air conditioning at noon"
+          - "By keeping all lights at 100% after midnight when closed"
+          - "By ignoring filter maintenance"
+        correct_index: 0
+        explanation: "Smart BMS automation delivers both guest comfort and energy conservation."
+    rewards:
+      xp: 210
+      coins: 95
+      badge: "Solar_Citadel_Crest"
+      item_unlock: "Golden_Safety_Hardhat"
+      unlocks_travel_pass: true
+
+  - campaign: "City_Properties_Urban_Excellence"
+    quest_id: "property_access_05"
+    title: "Universal Accessibility & Family Care Design"
+    core_value: "Social Responsibility"
+    lms_hook: "module_properties_inclusion_2026"
+    world: "Property_Estates"
+    npc_assigner: "Director_May"
+    spawn_location: [330, 600]
+    puzzle_object: "Esplanade Accessibility Plaza"
+    dialogue:
+      greeting: "Ramps, tactile paving, elevators, and nursing rooms make our properties welcoming to every family. Accept this inclusion trial?"
+      completion: "Inclusive community design verified!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "When prioritising elevator maintenance in a multi-story shopping center, why is rapid response critical?"
+        options:
+          - "Seniors, parents with strollers, and persons with disabilities rely on elevators for safe, dignified access"
+          - "Elevators are only used once a month"
+          - "Shoppers prefer carrying strollers up escalators"
+          - "Signage is never needed during maintenance"
+        correct_index: 0
+        explanation: "Accessible infrastructure reflects true community care."
+    rewards:
+      xp: 210
+      coins: 95
+      badge: "Inclusive_Skyline_Heart"
+      item_unlock: "Golden_Safety_Hardhat"
+      unlocks_travel_pass: true
+
+  # ==========================================================================
+  # WORLD 7: DISTRIBUTION BADLANDS (Pahtama • Dawei Port & Depot) — 5 Quests
+  # ==========================================================================
+  - campaign: "Distribution_Badlands_Logistics"
+    quest_id: "dist_supply_chain_01"
+    title: "Dawei Golden Route: Dock Lock & Fleet Matrix"
+    core_value: "Excellence"
+    lms_hook: "module_distribution_supply_chain_2026"
+    world: "Distribution_Badlands"
+    npc_assigner: "Captain_Aung"
+    spawn_location: [980, 580]
+    puzzle_object: "Automated Loading Dock & Route Matrix"
+    dialogue:
+      greeting: "Hail, traveler of the Dawei Distribution Depot! Pahtama Group and Premium Distribution keep the entire nation supplied. Will you accept this dock & fleet trial?"
+      completion: "Supply lines synchronized! You have earned the rank of Distribution Ranger—and soon, Supply Chain Knight!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "Before a forklift operator drives into a delivery trailer at the Dawei Warehouse Loading Dock, what safety check is mandatory?"
+        options:
+          - "Verify the trailer brakes are locked, wheel chocks are firmly wedged, and the dock leveler lip is fully seated"
+          - "Drive in immediately while the truck driver is still backing up"
+          - "Skip wheel chocks to save 30 seconds"
+          - "Carry two unstable pallets stacked above eye level"
+        correct_index: 0
+        explanation: "Wheel chocks and dock locks prevent dangerous trailer separation during loading."
+      - prompt: "How does multi-drop route telemetry improve national distribution across Myanmar?"
+        options:
+          - "It consolidates delivery corridors to reduce empty miles, save fuel, and guarantee on-time store replenishment"
+          - "It sends three half-empty trucks to the same street"
+          - "It ignores road weather alerts"
+          - "It disables cold-chain temperature sensors"
+        correct_index: 0
+        explanation: "Smart route planning balances speed, safety, and fuel sustainability."
+    rewards:
+      xp: 280
+      coins: 130
+      badge: "Supply_Chain_Shield"
+      item_unlock: "Pahtama_Winged_Boots"
+      unlocks_travel_pass: true
+
+  - campaign: "Distribution_Badlands_Logistics"
+    quest_id: "dist_fefo_02"
+    title: "Warehouse Depot Bay A: FEFO Inventory Mastery"
+    core_value: "Integrity"
+    lms_hook: "module_distribution_fefo_2026"
+    world: "Distribution_Badlands"
+    npc_assigner: "Warehouse_Master_U_Ba"
+    spawn_location: [370, 270]
+    puzzle_object: "Warehouse Depot Bay A (FEFO)"
+    dialogue:
+      greeting: "In our Dawei Warehouse Depots, FEFO (First-Expired, First-Out) discipline ensures every retail partner receives fresh stock with ample shelf life. Accept this trial?"
+      completion: "Warehouse FEFO accuracy locked at 100%!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "Two pallets of beverages are in Warehouse Bay A: Lot 101 expires in 4 months, and Lot 108 expires in 9 months. Which lot should be picked for dispatch first?"
+        options:
+          - "Lot 101 (First-Expired, First-Out), ensuring chronological stock rotation and zero expiry waste"
+          - "Lot 108 because it arrived more recently"
+          - "Mix unmarked cases from both pallets without scanning"
+          - "Leave Lot 101 in the corner until it expires"
+        correct_index: 0
+        explanation: "FEFO guarantees fresh stock rotation across the entire supply chain."
+    rewards:
+      xp: 230
+      coins: 105
+      badge: "Dawei_Depot_Star"
+      item_unlock: "Pahtama_Winged_Boots"
+      unlocks_travel_pass: true
+
+  - campaign: "Distribution_Badlands_Logistics"
+    quest_id: "dist_fleet_03"
+    title: "Cold-Chain Seal & Tamper-Evident Verification"
+    core_value: "Integrity"
+    lms_hook: "module_distribution_coldchain_2026"
+    world: "Distribution_Badlands"
+    npc_assigner: "Route_Planner_Ei_Phyu"
+    spawn_location: [370, 490]
+    puzzle_object: "Cold-Chain Storage Depot B"
+    dialogue:
+      greeting: "Chilled and frozen goods travel from our Dawei depot across Myanmar in sealed reefers. Ready to verify Cold-Chain Depot B?"
+      completion: "Cold-chain integrity verified from depot to store!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "Upon arrival at a regional receiving bay, what must the logistics coordinator verify on a refrigerated truck before unloading?"
+        options:
+          - "Match the serial number on the tamper-evident security seal against the dispatch manifest and download the continuous temperature log"
+          - "Break the seal without checking the number or temperature"
+          - "Accept warm frozen goods without notifying QA"
+          - "Sign the delivery note before opening the doors"
+        correct_index: 0
+        explanation: "Seal verification and data-logger checks prove unbroken cold-chain custody."
+    rewards:
+      xp: 230
+      coins: 105
+      badge: "Cold_Chain_Sentinel"
+      item_unlock: "Pahtama_Winged_Boots"
+      unlocks_travel_pass: true
+
+  - campaign: "Distribution_Badlands_Logistics"
+    quest_id: "dist_port_04"
+    title: "Dawei Deep-Sea Gantry Crane & Container Manifest"
+    core_value: "Excellence"
+    lms_hook: "module_distribution_port_2026"
+    world: "Distribution_Badlands"
+    npc_assigner: "Captain_Aung"
+    spawn_location: [750, 210]
+    puzzle_object: "Dawei Deep-Sea Gantry Crane"
+    dialogue:
+      greeting: "At the Dawei Deep-Sea Port, accurate customs manifests and safe container lifting keep imports flowing smoothly. Accept this port trial?"
+      completion: "Port gantry operations synchronized!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "During container hoisting at the Dawei port terminal, what is the golden rule for ground personnel?"
+        options:
+          - "Never stand or walk underneath a suspended container load and stay within designated high-visibility pedestrian walkways"
+          - "Run underneath a moving crane load to take a shortcut"
+          - "Remove hardhats and reflective vests near the quay"
+          - "Ignore crane horn signals"
+        correct_index: 0
+        explanation: "Staying clear of suspended loads is a non-negotiable port safety rule."
+    rewards:
+      xp: 220
+      coins: 100
+      badge: "Dawei_Port_Anchor"
+      item_unlock: "Pahtama_Winged_Boots"
+      unlocks_travel_pass: true
+
+  - campaign: "Distribution_Badlands_Logistics"
+    quest_id: "dist_highway_05"
+    title: "Defensive Driving & Convoy Rest Protocol"
+    core_value: "Social Responsibility"
+    lms_hook: "module_distribution_fleet_safety_2026"
+    world: "Distribution_Badlands"
+    npc_assigner: "Route_Planner_Ei_Phyu"
+    spawn_location: [1160, 320]
+    puzzle_object: "Pahtama Highway Convoy"
+    dialogue:
+      greeting: "Our drivers share Myanmar’s highways with families and communities every day. Will you accept the Highway Convoy Safety trial?"
+      completion: "Safe roads and zero-fatigue convoy mastery achieved!"
+    challenge_type: "scenario_quiz"
+    questions:
+      - prompt: "What is mandatory for all Pahtama & Premium Distribution fleet drivers on long-distance routes?"
+        options:
+          - "Complete pre-trip brake/tire inspections, obey speed limits, and take scheduled rest breaks to prevent fatigue"
+          - "Drive 16 hours straight without resting"
+          - "Use a mobile phone while driving through mountain passes"
+          - "Skip pre-trip vehicle checks during rainy season"
+        correct_index: 0
+        explanation: "Defensive driving and rest breaks protect both our drivers and the public."
+    rewards:
+      xp: 220
+      coins: 100
+      badge: "Golden_Convoy_Wings"
+      item_unlock: "Pahtama_Winged_Boots"
+      unlocks_travel_pass: true

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>CHL Realm • 3D Myanmar Fantasy Learning Adventure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="./assets/index-BVPjcFW9.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-C1ySxA_6.css">
+  </head>
+  <body>
+    <!-- Mobile Portrait Viewport Container (9:16 on desktop, 100% full-bleed on phones) -->
+    <div class="portrait-phone-shell">
+      <!-- ===================================================================
+           1. TOP PORTRAIT HUD OVERLAY (With Simple Quest Icon & Guardian Button)
+           =================================================================== -->
+      <header class="hud-topbar" id="hudTopbar">
+        <div class="brand-row">
+          <img
+            src="./assets/fantasy/realm_crest.jpg"
+            alt="CHL Realm Crest"
+            class="realm-crest-img"
+            id="realmCrest"
+            width="40"
+            height="40"
+          />
+          <div class="brand-titles">
+            <h1 class="realm-title">CHL Realm</h1>
+            <p class="realm-subtitle" id="worldBannerSubtitle">
+              The Hub (Ancient Bagan) • Home Base
+            </p>
+          </div>
+
+          <!-- Simple Quest Icon Button (Replaces P.A.C.E. Bar) -->
+          <button
+            type="button"
+            class="quest-icon-btn"
+            id="btnOpenQuestMenu"
+            title="View 5 World Quest Spots & Active Trial"
+            aria-label="Open Quests"
+          >
+            <span class="quest-icon-glyph">📜</span>
+            <span class="quest-icon-badge" id="questCountBadge">0/5</span>
+          </button>
+
+          <!-- Guild SSO Button -->
+          <button
+            type="button"
+            class="pixel-btn sm accent"
+            id="btnOpenSsoModal"
+            title="Switch Guild / SSO Login"
+          >
+            🧙‍♂️ Guild
+          </button>
+        </div>
+
+        <!-- Compact Stats Bar -->
+        <div class="hud-stats">
+          <div class="stat-pill">
+            <span class="stat-key">RANK</span>
+            <strong id="hudClassTitle">Level 1 Novice</strong>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-key">XP</span>
+            <strong id="hudXp">0 XP</strong>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-key">GOLD</span>
+            <strong id="hudCoins">120 🪙</strong>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-key">PORTALS</span>
+            <strong id="hudTravelPass">Home+Hub</strong>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================================================================
+           2. CENTER 3D FANTASY WORLD VIEWPORT & FLOATING OVERLAYS
+           =================================================================== -->
+      <main class="viewport-stage" aria-label="3D Myanmar Fantasy World Map">
+        <canvas id="realmCanvas"></canvas>
+
+        <!-- Compact Active Quest & Guardian Thura Quick Bar -->
+        <section class="floating-quest-card" aria-label="Active Learning Quest">
+          <div id="activeQuestBox" class="active-quest-box"></div>
+          <div class="core-values-row" id="badgesRow"></div>
+        </section>
+
+        <!-- Live 2x World Map Radar (Roads, Trails, Water, Landmarks, MCPs & Quest Spots) -->
+        <aside class="minimap-widget" id="miniMapWidget" aria-label="2x World Map Radar">
+          <div class="minimap-header">
+            <span class="minimap-title" id="miniMapTitle">🗺️ 2× Map</span>
+            <button
+              type="button"
+              class="minimap-toggle-btn"
+              id="btnToggleMiniMap"
+              title="Expand or Collapse 2x World Map"
+              aria-label="Toggle World Map Size"
+            >
+              ⤢
+            </button>
+          </div>
+          <canvas
+            id="miniMapCanvas"
+            class="minimap-canvas"
+            width="280"
+            height="162"
+            title="Tap anywhere on the 2x map to walk there"
+          ></canvas>
+        </aside>
+
+        <!-- Floating Guardian Spirit "Thura" Pill (1:1 Single-Thread Helper) -->
+        <button
+          type="button"
+          class="guardian-floating-btn"
+          id="btnOpenGuardianFloating"
+          title="Ask Guardian Thura (Gemini-3.8-flash)"
+        >
+          <span class="guardian-avatar-dot">✨</span>
+          <span>Ask Guardian <strong>Thura</strong></span>
+        </button>
+
+        <!-- Collapsible Hub & Spoke Myanmar Worlds Drawer -->
+        <aside class="world-drawer" id="worldDrawer" hidden>
+          <div class="drawer-header">
+            <h2>🌀 The Hub &amp; Myanmar Sector Worlds</h2>
+            <button type="button" class="pixel-btn sm" id="btnCloseWorldDrawer">✕</button>
+          </div>
+          <p class="panel-hint">
+            <strong>The Hub (Ancient Bagan)</strong> is your Home Base. Complete any Core Values trial to unlock Portal Gates to Yangon, Mandalay, Taunggyi, Putao-Myeik, Mawlamyaing, and Dawei!
+          </p>
+          <div class="world-nav-list" id="worldNavList"></div>
+        </aside>
+
+        <!-- Contextual 3D Proximity Action Prompt -->
+        <div class="proximity-banner" id="proximityBanner" hidden>
+          <span id="proximityText">Approach an MCP Guide or Quest Spot</span>
+          <button type="button" class="pixel-btn accent" id="btnProximityAction">
+            Interact ⚡
+          </button>
+        </div>
+
+        <!-- =================================================================
+             3. ERGONOMIC THUMB-ZONE TOUCH CONTROLS (Bottom of 3D Viewport)
+             ================================================================= -->
+        <div class="thumb-controls-overlay">
+          <!-- Left Thumb: 3D Movement D-Pad -->
+          <div class="touch-dpad" aria-label="3D Character Movement Controls">
+            <button type="button" class="dpad-btn up" data-dir="up" aria-label="Move Forward">▲</button>
+            <div class="dpad-mid-row">
+              <button type="button" class="dpad-btn left" data-dir="left" aria-label="Move Left">◀</button>
+              <button type="button" class="dpad-btn center-orb" id="btnRotateCam" title="Rotate 3D Camera">🎥</button>
+              <button type="button" class="dpad-btn right" data-dir="right" aria-label="Move Right">▶</button>
+            </div>
+            <button type="button" class="dpad-btn down" data-dir="down" aria-label="Move Back">▼</button>
+          </div>
+
+          <!-- Right Thumb: Primary Action Orb -->
+          <div class="right-thumb-cluster">
+            <button
+              type="button"
+              class="action-rune-orb"
+              id="btnTouchInteract"
+              aria-label="Interact with nearest object"
+            >
+              <span class="orb-icon">⚡</span>
+              <span class="orb-label">ACT</span>
+            </button>
+          </div>
+        </div>
+      </main>
+
+      <!-- ===================================================================
+           4. PORTRAIT BOTTOM DOCK: WATERCOOLER CHAT + 5 FEATURE TABS
+           =================================================================== -->
+      <footer class="portrait-bottom-dock">
+        <form class="chat-bar" id="chatForm">
+          <input
+            type="text"
+            id="chatInput"
+            maxlength="60"
+            placeholder="💬 Watercooler chat bubble to nearby colleagues..."
+            aria-label="In-game proximity chat message"
+          />
+          <button type="submit" class="pixel-btn sm accent">Say</button>
+        </form>
+
+        <nav class="dock-nav" aria-label="Realm Navigation Dock">
+          <button type="button" class="dock-tab" id="btnToggleWorlds">
+            <span class="dock-icon">🌀</span>
+            <span>Worlds</span>
+          </button>
+          <button type="button" class="dock-tab" id="btnOpenGuardianDock">
+            <span class="dock-icon">✨</span>
+            <span>Thura AI</span>
+          </button>
+          <button type="button" class="dock-tab" id="btnOpenTailor">
+            <span class="dock-icon">👑</span>
+            <span>Tailor</span>
+          </button>
+          <button type="button" class="dock-tab" id="btnOpenLeaderboard">
+            <span class="dock-icon">🏆</span>
+            <span>Ranks</span>
+          </button>
+          <button type="button" class="dock-tab" id="btnOpenGeminiStudio">
+            <span class="dock-icon">🛠️</span>
+            <span>Studio</span>
+          </button>
+        </nav>
+      </footer>
+    </div>
+
+    <!-- =====================================================================
+         MODAL 1: LEARNING QUEST & ANIMATED NPC DIALOG
+         - Shows Animated Character Face
+         - Prompts user to Accept Trial BEFORE showing questions
+         - Shows 1 Question at a time with NO default selected answer
+         ===================================================================== -->
+    <dialog id="questDialog" closedby="any" aria-labelledby="questDialogTitle">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <div>
+            <span class="dialog-kicker" id="questDialogKicker">SECTOR TRIAL</span>
+            <h2 id="questDialogTitle">Quest Title</h2>
+          </div>
+          <form method="dialog">
+            <button type="submit" class="pixel-btn sm" value="cancel">✕</button>
+          </form>
+        </header>
+        <div class="dialog-body" id="questDialogBody"></div>
+      </div>
+    </dialog>
+
+    <!-- =====================================================================
+         MODAL 2: PLAYER'S GUARDIAN "THURA" (1:1 Single-Thread Chat • Gemini-3.8-flash)
+         ===================================================================== -->
+    <dialog id="guardianDialog" closedby="any" aria-labelledby="guardianDialogTitle">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <div style="display:flex;align-items:center;gap:0.55rem;">
+            <canvas id="guardianFaceCanvas" width="48" height="48" class="npc-face-canvas sm"></canvas>
+            <div>
+              <span class="dialog-kicker">PLAYER'S GUARDIAN • GEMINI-3.8-FLASH</span>
+              <h2 id="guardianDialogTitle">Guardian Thura (1:1 Guide)</h2>
+            </div>
+          </div>
+          <form method="dialog">
+            <button type="submit" class="pixel-btn sm" value="cancel">✕</button>
+          </form>
+        </header>
+        <div class="dialog-body guardian-dialog-body">
+          <div class="guardian-thread" id="guardianThreadBox" aria-live="polite"></div>
+          <form id="guardianChatForm" class="guardian-input-row">
+            <input
+              type="text"
+              id="guardianInput"
+              placeholder="Ask Guardian Thura for help (replies in <60 words)..."
+              required
+            />
+            <button type="submit" class="pixel-btn accent">Ask</button>
+          </form>
+          <div class="guardian-quick-chips">
+            <button type="button" class="chip-btn" data-guardian-ask="Where is my next quest spot in this world?">
+              📍 Next Quest Spot?
+            </button>
+            <button type="button" class="chip-btn" data-guardian-ask="Tell me about the Myanmar landmarks and 3 MCPs here.">
+              🏛️ World Landmarks &amp; MCPs?
+            </button>
+            <button type="button" class="chip-btn" data-guardian-ask="How do I unlock all portals from The Hub in Bagan?">
+              🌀 Unlock Portals?
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- =====================================================================
+         MODAL 3: COMPETITIVE LEADERBOARDS
+         ===================================================================== -->
+    <dialog id="leaderboardDialog" closedby="any" aria-labelledby="leaderboardDialogTitle">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <div>
+            <span class="dialog-kicker">THE HUB (ANCIENT BAGAN) • NOTICE BOARD</span>
+            <h2 id="leaderboardDialogTitle">Sector vs. Sector &amp; Top Learners</h2>
+          </div>
+          <form method="dialog">
+            <button type="submit" class="pixel-btn sm" value="cancel" autofocus>✕</button>
+          </form>
+        </header>
+        <div class="dialog-body">
+          <div class="leaderboard-grid">
+            <div>
+              <h3>1. Sector vs. Sector (Business Unit Completion)</h3>
+              <div
+                tabindex="0"
+                role="region"
+                aria-labelledby="sectorTableCaption"
+                class="table-wrapper"
+              >
+                <table class="sector-table">
+                  <caption id="sectorTableCaption">
+                    Cross-team learning completion rivalry across Yangon, Mandalay, Taunggyi, Putao-Myeik, Mawlamyaing, and Dawei sectors
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th>Sector Team</th>
+                      <th>Business Unit</th>
+                      <th>Completion</th>
+                      <th>Quests Cleared</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sectorLeaderboardBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h3>2. Individual Top Learners (Monthly XP)</h3>
+              <div
+                tabindex="0"
+                role="region"
+                aria-labelledby="individualTableCaption"
+                class="table-wrapper"
+              >
+                <table class="individual-table">
+                  <caption id="individualTableCaption">
+                    Highest XP learners across CHL Realm
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th>Learner</th>
+                      <th>Sector</th>
+                      <th>Class Rank</th>
+                      <th>Monthly XP</th>
+                    </tr>
+                  </thead>
+                  <tbody id="individualLeaderboardBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- =====================================================================
+         MODAL 4: TAILOR NPC & 3D AVATAR DRESS-UP SHOP
+         ===================================================================== -->
+    <dialog id="tailorDialog" closedby="any" aria-labelledby="tailorDialogTitle">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <div>
+            <span class="dialog-kicker">THE HUB (BAGAN) • TAILOR DAW KHIN</span>
+            <h2 id="tailorDialogTitle">3D Avatar Dress-Up &amp; Cosmetics</h2>
+          </div>
+          <form method="dialog">
+            <button type="submit" class="pixel-btn sm" value="cancel" autofocus>✕</button>
+          </form>
+        </header>
+        <div class="dialog-body" id="tailorDialogBody"></div>
+      </div>
+    </dialog>
+
+    <!-- =====================================================================
+         MODAL 5: GEMINI AI CONTENT ENGINE & LMS xAPI LOGS
+         ===================================================================== -->
+    <dialog id="geminiDialog" closedby="any" aria-labelledby="geminiDialogTitle">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <div>
+            <span class="dialog-kicker">CONTENT ENGINE &amp; xAPI TELEMETRY</span>
+            <h2 id="geminiDialogTitle">Gemini YAML Studio &amp; LMS xAPI Logs</h2>
+          </div>
+          <form method="dialog">
+            <button type="submit" class="pixel-btn sm" value="cancel" autofocus>✕</button>
+          </form>
+        </header>
+        <div class="dialog-body">
+          <div class="action-row">
+            <button type="button" class="pixel-btn sm" id="btnOpenXApiLogs">
+              📜 View Dispatched LMS xAPI Statements
+            </button>
+          </div>
+          <div class="gemini-form-grid">
+            <label>
+              <span>Target Myanmar Sector World</span>
+              <select id="geminiWorldSelect">
+                <option value="The_HUB">The Hub (Ancient Bagan Home Base)</option>
+                <option value="Retail_Realm">Yangon Shopping Center (CMHL)</option>
+                <option value="Food_Beverage_District">Mandalay Kitchens (CityFood)</option>
+                <option value="Manufacturing_Agri_Zone">Taunggyi Farms &amp; Factory (Origins)</option>
+                <option value="Ventures_Valley">Putao &amp; Myeik Incubator (Ventures)</option>
+                <option value="Property_Estates">Mawlamyaing Sky-Estates (Properties)</option>
+                <option value="Distribution_Badlands">Dawei Port &amp; Depot (Pahtama)</option>
+              </select>
+            </label>
+            <label>
+              <span>LMS Hook ID</span>
+              <input type="text" id="geminiLmsHook" value="module_core_values_2026" />
+            </label>
+            <label>
+              <span>Optional Gemini API Key (For Gemini-3.8-flash &amp; YAML)</span>
+              <input type="password" id="geminiApiKey" placeholder="AIzaSy..." />
+            </label>
+          </div>
+          <label class="block-label">
+            <span>Training Deck / SOP Extract</span>
+            <textarea id="geminiSourceInput" rows="3">CMHL Retail Customer Service & Integrity SOP: Always honor displayed promotional shelf pricing transparently, log misplaced customer items at Customer Service immediately, and inspect fresh produce crates every morning.</textarea>
+          </label>
+          <div class="action-row">
+            <button type="button" class="pixel-btn accent" id="btnRunGeminiYaml">
+              ✨ Generate YAML with Gemini
+            </button>
+            <button type="button" class="pixel-btn" id="btnDeployYamlToWorld">
+              🚀 Spawn Quest Spot in World
+            </button>
+          </div>
+          <label class="block-label">
+            <span>Generated Quest YAML</span>
+            <textarea id="geminiYamlOutput" class="code-textarea" rows="8"></textarea>
+          </label>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- =====================================================================
+         MODAL 6: KEYCLOAK OIDC SSO & GUILD SELECTOR
+         ===================================================================== -->
+    <dialog id="ssoDialog" closedby="any" aria-labelledby="ssoDialogTitle">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <div>
+            <span class="dialog-kicker">KEYCLOAK OIDC • CLEAN SLATE LOGIN</span>
+            <h2 id="ssoDialogTitle">Select Your Sector Guild &amp; 3D Hero</h2>
+          </div>
+          <form method="dialog">
+            <button type="submit" class="pixel-btn sm" value="cancel" autofocus>✕</button>
+          </form>
+        </header>
+        <div class="dialog-body">
+          <img
+            src="./assets/fantasy/hero_avatars.jpg"
+            alt="The Six Fantasy Guild Chibi Heroes"
+            class="hero-sheet-preview"
+          />
+          <p class="panel-hint">
+            All employees start at <strong>Home Base: The Hub (Ancient Bagan)</strong> or their Business Unit World as a Level 1 Novice wearing a sector-colored tunic.
+          </p>
+          <label class="block-label">
+            <span>Employee Name</span>
+            <input type="text" id="ssoEmployeeName" value="Aung Myint" />
+          </label>
+          <div class="sso-sector-grid" id="ssoSectorGrid"></div>
+          <div class="action-row" style="margin-top: 0.85rem;">
+            <button type="button" class="pixel-btn danger" id="btnResetCleanSlate">
+              ♻️ Reset to Level 1 Clean Slate Novice (At The Hub)
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- =====================================================================
+         MODAL 7: SERVERLESS LMS GATEWAY (xAPI STATEMENT INSPECTOR)
+         ===================================================================== -->
+    <dialog id="xapiDialog" closedby="any" aria-labelledby="xapiDialogTitle">
+      <div class="dialog-shell">
+        <header class="dialog-header">
+          <div>
+            <span class="dialog-kicker">FIREBASE CLOUD FUNCTION • LMS BRIDGE</span>
+            <h2 id="xapiDialogTitle">ADL xAPI (TinCan 1.0.3) Statements</h2>
+          </div>
+          <form method="dialog">
+            <button type="submit" class="pixel-btn sm" value="cancel" autofocus>✕</button>
+          </form>
+        </header>
+        <div class="dialog-body" id="xapiDialogBody"></div>
+      </div>
+    </dialog>
+
+  </body>
+</html>
